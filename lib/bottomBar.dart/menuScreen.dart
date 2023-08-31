@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:divine/backgroundDesign/bg.dart';
 import 'package:divine/colors.dart';
 import 'package:divine/modelClass/itemPage.dart';

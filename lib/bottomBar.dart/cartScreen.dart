@@ -177,9 +177,7 @@ class _CartScreenState extends State<CartScreen> {
                                       child: Image.network(
                                           snapshot.data!.docs[index]['image']),
                                     ),
-                                    // SizedBox(
-                                    //   width: width * 0.06,
-                                    // ),
+                                    SizedBox(width: width * 0.05),
                                     SizedBox(
                                       height: height * 0.12,
                                       width: width * 0.2,

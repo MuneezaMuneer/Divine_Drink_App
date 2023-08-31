@@ -87,8 +87,7 @@ class _HomeDetailScreenState extends State<HomeDetailScreen> {
                                         const EdgeInsets.fromLTRB(0, 8, 10, 0),
                                     child: InkWell(
                                         onTap: () {
-                                          // Navigator.of(context)
-                                          //     .pushNamed(DrawerScreen.pageName);
+                                         
                                           PersistentNavBarNavigator
                                               .pushNewScreen(
                                             context,

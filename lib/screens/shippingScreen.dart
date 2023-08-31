@@ -271,7 +271,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
                       )),
                   SizedBox(height: height * 0.02),
                   SizedBox(
-                    height: height * 0.55,
+                    height: height * 0.65,
                     width: width * 0.9,
                     child: Container(
                       color: boxColor,
@@ -361,7 +361,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                             BorderSide(color: Colors.white))),
                               ),
                             ),
-                            const SizedBox(height: 32),
+                            SizedBox(height: height * 0.01),
                             SizedBox(
                               height: height * 0.065,
                               child: InkWell(
