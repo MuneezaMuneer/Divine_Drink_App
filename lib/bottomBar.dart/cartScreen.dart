@@ -124,9 +124,10 @@ class _CartScreenState extends State<CartScreen> {
                                 deleteItemFromCart(itemId);
                               } else {
                                 final oldPrice = cartItem['price'];
-                                num newPrice =
-                                    (oldPrice / cartItem['noOrders']) *
-                                        newQuantity;
+                                int newPrice =
+                                    ((oldPrice / cartItem['noOrders']) *
+                                            newQuantity)
+                                        .toInt();
 
                                 FirebaseFirestore.instance
                                     .collection('Cart')
@@ -146,8 +147,10 @@ class _CartScreenState extends State<CartScreen> {
                               final itemId = cartItem.id;
                               final newQuantity = cartItem['noOrders'] + 1;
                               final oldPrice = cartItem['price'];
-                              num newPrice = (oldPrice / cartItem['noOrders']) *
-                                  newQuantity;
+                              int newPrice =
+                                  ((oldPrice / cartItem['noOrders']) *
+                                          newQuantity)
+                                      .toInt();
 
                               FirebaseFirestore.instance
                                   .collection('Cart')
@@ -174,9 +177,9 @@ class _CartScreenState extends State<CartScreen> {
                                       child: Image.network(
                                           snapshot.data!.docs[index]['image']),
                                     ),
-                                    SizedBox(
-                                      width: width * 0.06,
-                                    ),
+                                    // SizedBox(
+                                    //   width: width * 0.06,
+                                    // ),
                                     SizedBox(
                                       height: height * 0.12,
                                       width: width * 0.2,
@@ -257,8 +260,15 @@ class _CartScreenState extends State<CartScreen> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: width * 0.065,
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: SizedBox(
+                                        height: height * 0.09,
+                                        child: VerticalDivider(
+                                          thickness: 1,
+                                          color: whiteColor.withOpacity(0.7),
+                                        ),
+                                      ),
                                     ),
                                     SizedBox(
                                       height: height * 0.12,
@@ -312,7 +322,17 @@ class _CartScreenState extends State<CartScreen> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: width * 0.065,
+                                      width: width * 0.03,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: SizedBox(
+                                        height: height * 0.09,
+                                        child: VerticalDivider(
+                                          thickness: 1,
+                                          color: whiteColor.withOpacity(0.7),
+                                        ),
+                                      ),
                                     ),
                                     SizedBox(
                                       height: height * 0.12,
