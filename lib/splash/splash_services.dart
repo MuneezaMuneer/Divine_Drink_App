@@ -7,22 +7,15 @@ import 'package:flutter/material.dart';
 class SplashServices {
   void isLogin(BuildContext context) {
     if (FirebaseAuth.instance.currentUser != null) {
-       Timer(
-        const Duration(seconds: 2),
-        () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const BottomBarDesign(),
-            )));
+      Timer(
+          const Duration(seconds: 3),
+          () => Navigator.pushNamedAndRemoveUntil(
+              context, BottomBarDesign.pageName, (route) => false));
+    } else {
+      Timer(
+          const Duration(seconds: 2),
+          () => Navigator.pushNamedAndRemoveUntil(
+              context, DivineApp.pageName, (route) => false));
     }
-   else{
-     Timer(
-        const Duration(seconds: 2),
-        () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const DivineApp(),
-            )));
-   }
   }
 }

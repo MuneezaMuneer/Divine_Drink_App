@@ -1,13 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-
 import 'package:divine/backgroundDesign/bg.dart';
-
 import '../colors.dart';
 import '../screens/drawerScreen.dart';
 
@@ -30,37 +27,41 @@ class _ItemScreenState extends State<ItemScreen> {
       .snapshots();
   int noOrders = 1;
   //This method is used to send data to Firestore
-  void addTOCart(ItemModal itemModal) async {
-    final newPrice = calculateTotalPrice(itemModal.price, noOrders);
-    final cartItemDoc = firestore
-        .doc(FirebaseAuth.instance.currentUser!.email)
-        .collection('Cart')
-        .doc(itemModal.itemName);
+ void addTOCart(ItemModal itemModal) async {
+  final cartItemDoc = firestore
+      .doc(FirebaseAuth.instance.currentUser!.email)
+      .collection('Cart')
+      .doc(itemModal.itemName);
 
-    final cartItemDocSnapshot = await cartItemDoc.get();
+  final cartItemDocSnapshot = await cartItemDoc.get();
 
-    if (cartItemDocSnapshot.exists) {
-      final currentNoOrders = cartItemDocSnapshot.data()!['noOrders'];
-      final updatedNoOrders = currentNoOrders + 1;
+  if (cartItemDocSnapshot.exists) {
+    final currentNoOrders = cartItemDocSnapshot.data()!['noOrders'];
+    final updatedNoOrders = currentNoOrders + 1;
 
-      cartItemDoc.update({
-        'noOrders': updatedNoOrders,
-      });
-    } else {
-      cartItemDoc.set({
-        'itemName': itemModal.itemName,
-        'image': itemModal.image,
-        'price': newPrice,
-        'noOrders': 1,
-        'originalPrice': itemModal.price,
-        'quantity': itemModal.quantity,
-      });
-    }
+    // Calculate the new total price
+    final newPrice = calculateTotalPrice(itemModal.price, updatedNoOrders);
+
+    cartItemDoc.update({
+      'noOrders': updatedNoOrders,
+      'price': newPrice, // Update the price as well
+    });
+  } else {
+    final newPrice = calculateTotalPrice(itemModal.price, 1); // Always set to 1 when adding a new item
+    cartItemDoc.set({
+      'itemName': itemModal.itemName,
+      'image': itemModal.image,
+      'price': newPrice,
+      'noOrders': 1,
+      'originalPrice': itemModal.price,
+      'quantity': itemModal.quantity,
+    });
   }
+}
 
-  num calculateTotalPrice(price, noOrders) {
-    return price * noOrders;
-  }
+ num calculateTotalPrice(price, noOrders) {
+  return price * noOrders;
+}
 
   @override
   Widget build(BuildContext context) {

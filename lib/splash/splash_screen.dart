@@ -1,9 +1,5 @@
-
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:divine/splash/splash_services.dart';
 import 'package:flutter/material.dart';
-
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 static const pageName = "/SplashScreen";
