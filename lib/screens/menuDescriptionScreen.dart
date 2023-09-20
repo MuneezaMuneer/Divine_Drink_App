@@ -176,7 +176,7 @@ class _DescriptionScreenState extends State<DescriptionScreen>
                           ),
                           Text(widget.itemName,
                               style: const TextStyle(
-                                  fontSize: 17,
+                                  fontSize: 15,
                                   color: whiteColor,
                                   fontWeight: FontWeight.bold)),
                           SizedBox(
@@ -191,7 +191,7 @@ class _DescriptionScreenState extends State<DescriptionScreen>
                             child: Center(
                               child: Text(widget.quantity,
                                   style: const TextStyle(
-                                      fontSize: 13,
+                                      fontSize: 11,
                                       color: whiteColor,
                                       fontWeight: FontWeight.w900)),
                             ),
@@ -204,11 +204,11 @@ class _DescriptionScreenState extends State<DescriptionScreen>
                             children: [
                               const Text('Rs. ',
                                   style:
-                                      TextStyle(color: yellow, fontSize: 15)),
+                                      TextStyle(color: yellow, fontSize: 13)),
                               Text(widget.price.toString(),
                                   style: const TextStyle(
                                       color: whiteColor,
-                                      fontSize: 13,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.bold)),
                             ],
                           ),
@@ -226,13 +226,13 @@ class _DescriptionScreenState extends State<DescriptionScreen>
                                   height: height * 0.05,
                                   width: width * 0.3,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(13),
                                     color: yellow,
                                   ),
                                   child: const Center(
                                       child: Text('Add to cart',
                                           style: TextStyle(
-                                              fontSize: 13,
+                                              fontSize: 11,
                                               color: whiteColor,
                                               fontWeight: FontWeight.w900))),
                                 ),
@@ -284,7 +284,7 @@ class _DescriptionScreenState extends State<DescriptionScreen>
                               alignment: Alignment.topLeft,
                               child: Text('Description:-',
                                   style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                       color: yellow,
                                       fontWeight: FontWeight.bold)),
                             ),
@@ -297,7 +297,7 @@ class _DescriptionScreenState extends State<DescriptionScreen>
                             child: AutoSizeText(
                               widget.description,
                               style: const TextStyle(
-                                  fontSize: 14, color: whiteColor),
+                                  fontSize: 12, color: whiteColor),
                             ),
                           ),
                         ],

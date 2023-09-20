@@ -27,41 +27,42 @@ class _ItemScreenState extends State<ItemScreen> {
       .snapshots();
   int noOrders = 1;
   //This method is used to send data to Firestore
- void addTOCart(ItemModal itemModal) async {
-  final cartItemDoc = firestore
-      .doc(FirebaseAuth.instance.currentUser!.email)
-      .collection('Cart')
-      .doc(itemModal.itemName);
+  void addTOCart(ItemModal itemModal) async {
+    final cartItemDoc = firestore
+        .doc(FirebaseAuth.instance.currentUser!.email)
+        .collection('Cart')
+        .doc(itemModal.itemName);
 
-  final cartItemDocSnapshot = await cartItemDoc.get();
+    final cartItemDocSnapshot = await cartItemDoc.get();
 
-  if (cartItemDocSnapshot.exists) {
-    final currentNoOrders = cartItemDocSnapshot.data()!['noOrders'];
-    final updatedNoOrders = currentNoOrders + 1;
+    if (cartItemDocSnapshot.exists) {
+      final currentNoOrders = cartItemDocSnapshot.data()!['noOrders'];
+      final updatedNoOrders = currentNoOrders + 1;
 
-    // Calculate the new total price
-    final newPrice = calculateTotalPrice(itemModal.price, updatedNoOrders);
+      // Calculate the new total price
+      final newPrice = calculateTotalPrice(itemModal.price, updatedNoOrders);
 
-    cartItemDoc.update({
-      'noOrders': updatedNoOrders,
-      'price': newPrice, // Update the price as well
-    });
-  } else {
-    final newPrice = calculateTotalPrice(itemModal.price, 1); // Always set to 1 when adding a new item
-    cartItemDoc.set({
-      'itemName': itemModal.itemName,
-      'image': itemModal.image,
-      'price': newPrice,
-      'noOrders': 1,
-      'originalPrice': itemModal.price,
-      'quantity': itemModal.quantity,
-    });
+      cartItemDoc.update({
+        'noOrders': updatedNoOrders,
+        'price': newPrice, // Update the price as well
+      });
+    } else {
+      final newPrice = calculateTotalPrice(
+          itemModal.price, 1); // Always set to 1 when adding a new item
+      cartItemDoc.set({
+        'itemName': itemModal.itemName,
+        'image': itemModal.image,
+        'price': newPrice,
+        'noOrders': 1,
+        'originalPrice': itemModal.price,
+        'quantity': itemModal.quantity,
+      });
+    }
   }
-}
 
- num calculateTotalPrice(price, noOrders) {
-  return price * noOrders;
-}
+  num calculateTotalPrice(price, noOrders) {
+    return price * noOrders;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -147,7 +148,7 @@ class _ItemScreenState extends State<ItemScreen> {
                                         padding: const EdgeInsets.only(top: 7),
                                         child: Text(itemModal.itemName,
                                             style: const TextStyle(
-                                                fontSize: 18,
+                                                fontSize: 16,
                                                 color: whiteColor,
                                                 fontWeight: FontWeight.bold)),
                                       )),
@@ -159,84 +160,79 @@ class _ItemScreenState extends State<ItemScreen> {
                                         children: [
                                           const Text('Rs. ',
                                               style: TextStyle(
-                                                  color: yellow, fontSize: 15)),
+                                                  color: yellow, fontSize: 13)),
                                           Text(itemModal.price.toString(),
                                               style: const TextStyle(
                                                   color: whiteColor,
-                                                  fontSize: 13,
+                                                  fontSize: 11,
                                                   fontWeight: FontWeight.bold)),
                                         ],
                                       )),
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 19),
-                                    child: InkWell(
-                                      onTap: () {
-                                        addTOCart(itemModal);
-                                      },
-                                      child: Stack(
-                                        alignment: Alignment.center,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 6),
-                                            child: Container(
-                                              height: height * 0.05,
-                                              width: width * 0.3,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: yellow,
-                                              ),
-                                              child: const Center(
-                                                  child: Text('Add to cart',
-                                                      style: TextStyle(
-                                                          fontSize: 13,
-                                                          color: whiteColor,
-                                                          fontWeight: FontWeight
-                                                              .w900))),
-                                            ),
+                                  InkWell(
+                                    onTap: () {
+                                      addTOCart(itemModal);
+                                    },
+                                    child: Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        Container(
+                                          height: height * 0.05,
+                                          width: width * 0.28,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(13),
+                                            color: yellow,
                                           ),
-                                          StreamBuilder(
-                                            stream: fireStore1,
-                                            builder: (context, snapshot) {
-                                              num newtotalNoOfOrders = 0;
-                                              if (snapshot.hasData) {
-                                                final cartItems =
-                                                    snapshot.data!.docs;
+                                          child: const Center(
+                                              child: FittedBox(
+                                            child: Text('Add to cart',
+                                                style: TextStyle(
+                                                    fontSize: 11,
+                                                    color: whiteColor,
+                                                    fontWeight:
+                                                        FontWeight.w900)),
+                                          )),
+                                        ),
+                                        SizedBox(height: height * 0.07),
+                                        StreamBuilder(
+                                          stream: fireStore1,
+                                          builder: (context, snapshot) {
+                                            num newtotalNoOfOrders = 0;
+                                            if (snapshot.hasData) {
+                                              final cartItems =
+                                                  snapshot.data!.docs;
 
-                                                for (var cartItem
-                                                    in cartItems) {
-                                                  if (cartItem['itemName'] ==
-                                                      itemModal.itemName) {
-                                                    newtotalNoOfOrders =
-                                                        cartItem['noOrders'];
-                                                    break;
-                                                  }
+                                              for (var cartItem in cartItems) {
+                                                if (cartItem['itemName'] ==
+                                                    itemModal.itemName) {
+                                                  newtotalNoOfOrders =
+                                                      cartItem['noOrders'];
+                                                  break;
                                                 }
                                               }
-                                              if (newtotalNoOfOrders > 0) {
-                                                return Positioned(
-                                                  top: 0,
-                                                  right: 0,
-                                                  child: Badge(
-                                                    label: Text(
-                                                      '$newtotalNoOfOrders',
-                                                      style: const TextStyle(
-                                                        color: whiteColor,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 10,
-                                                      ),
+                                            }
+                                            if (newtotalNoOfOrders > 0) {
+                                              return Positioned(
+                                                top: 0,
+                                                right: 0,
+                                                child: Badge(
+                                                  label: Text(
+                                                    '$newtotalNoOfOrders',
+                                                    style: const TextStyle(
+                                                      color: whiteColor,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 10,
                                                     ),
                                                   ),
-                                                );
-                                              } else {
-                                                return const SizedBox(); // Return an empty widget if not added to cart
-                                              }
-                                            },
-                                          ),
-                                        ],
-                                      ),
+                                                ),
+                                              );
+                                            } else {
+                                              return const SizedBox(); // Return an empty widget if not added to cart
+                                            }
+                                          },
+                                        ),
+                                      ],
                                     ),
                                   )
                                 ],

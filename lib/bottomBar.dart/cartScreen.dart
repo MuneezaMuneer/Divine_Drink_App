@@ -208,14 +208,16 @@ class _CartScreenState extends State<CartScreen> {
                                                   child: Padding(
                                                     padding: EdgeInsets.only(
                                                         left: 10),
-                                                    child: Text(
-                                                      'Rs.',
-                                                      softWrap: true,
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: yellow,
-                                                          fontSize: 10),
+                                                    child: FittedBox(
+                                                      child: Text(
+                                                        'Rs.',
+                                                        softWrap: true,
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: yellow,
+                                                            fontSize: 10),
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -275,11 +277,14 @@ class _CartScreenState extends State<CartScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          const Text('Quanity',
-                                              style: TextStyle(
-                                                  color: whiteColor,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.bold)),
+                                          const FittedBox(
+                                            child: Text('Quanity',
+                                                style: TextStyle(
+                                                    color: whiteColor,
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ),
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceEvenly,
@@ -290,19 +295,21 @@ class _CartScreenState extends State<CartScreen> {
                                                 },
                                                 child: const Text('-',
                                                     style: TextStyle(
-                                                        fontSize: 22,
+                                                        fontSize: 18,
                                                         color: whiteColor,
                                                         fontWeight:
                                                             FontWeight.w900)),
                                               ),
-                                              Text(
-                                                  snapshot.data!
-                                                      .docs[index]['noOrders']
-                                                      .toString(),
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    color: Colors.black,
-                                                  )),
+                                              FittedBox(
+                                                child: Text(
+                                                    snapshot.data!
+                                                        .docs[index]['noOrders']
+                                                        .toString(),
+                                                    style: const TextStyle(
+                                                      fontSize: 12,
+                                                      color: Colors.black,
+                                                    )),
+                                              ),
                                               InkWell(
                                                 onTap: () {
                                                   addItemToCart(cartItem);
@@ -310,7 +317,7 @@ class _CartScreenState extends State<CartScreen> {
                                                 child: const Text('+',
                                                     style: TextStyle(
                                                         color: whiteColor,
-                                                        fontSize: 18,
+                                                        fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.w900)),
                                               )
@@ -339,19 +346,25 @@ class _CartScreenState extends State<CartScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          const Text('Price',
-                                              style: TextStyle(
-                                                  color: whiteColor,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.bold)),
-                                          Text(
-                                              snapshot
-                                                  .data!.docs[index]['price']
-                                                  .toString(),
-                                              style: const TextStyle(
-                                                  color: whiteColor,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.bold)),
+                                          const FittedBox(
+                                            child: Text('Price',
+                                                style: TextStyle(
+                                                    color: whiteColor,
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ),
+                                          FittedBox(
+                                            child: Text(
+                                                snapshot
+                                                    .data!.docs[index]['price']
+                                                    .toString(),
+                                                style: const TextStyle(
+                                                    color: whiteColor,
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -406,12 +419,14 @@ class _CartScreenState extends State<CartScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                const Text(
-                                  'Total',
-                                  style: TextStyle(
-                                    color: whiteColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 20,
+                                const FittedBox(
+                                  child: Text(
+                                    'Total',
+                                    style: TextStyle(
+                                      color: whiteColor,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 20,
+                                    ),
                                   ),
                                 ),
                                 Container(
@@ -421,21 +436,23 @@ class _CartScreenState extends State<CartScreen> {
                                       color: yellow,
                                       borderRadius: BorderRadius.circular(15)),
                                   child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
                                       const Padding(
-                                        padding: EdgeInsets.only(left: 13),
-                                        child: Text(
-                                          'Rs.',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 16,
+                                        padding: EdgeInsets.only(left: 8),
+                                        child: FittedBox(
+                                          child: Text(
+                                            'Rs.',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 16,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 10),
+                                      FittedBox(
                                         child: Text(
                                           '$totalCartPrice',
                                           style: const TextStyle(
@@ -507,12 +524,18 @@ class _CartScreenState extends State<CartScreen> {
                                       color: yellow,
                                       borderRadius: BorderRadius.circular(15)),
                                   child: const Center(
-                                    child: Text(
-                                      'Proceed to Checkout',
-                                      style: TextStyle(
-                                        color: whiteColor,
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 17,
+                                    child: FittedBox(
+                                      child: Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 4, right: 4),
+                                        child: Text(
+                                          'Proceed to Checkout',
+                                          style: TextStyle(
+                                            color: whiteColor,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 17,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),

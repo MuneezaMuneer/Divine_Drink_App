@@ -1,14 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-
 import 'package:divine/backgroundDesign/bg.dart';
 import 'package:divine/colors.dart';
-
 import 'drawerScreen.dart';
 import 'menuDescriptionScreen.dart';
 
@@ -87,7 +84,6 @@ class _HomeDetailScreenState extends State<HomeDetailScreen> {
                                         const EdgeInsets.fromLTRB(0, 8, 10, 0),
                                     child: InkWell(
                                         onTap: () {
-                                         
                                           PersistentNavBarNavigator
                                               .pushNewScreen(
                                             context,
@@ -202,17 +198,17 @@ class _HomeDetailScreenState extends State<HomeDetailScreen> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: height * 0.04,
-                                      ),
-                                      Expanded(
-                                          flex: 1,
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 4, right: 4),
+                                        child: FittedBox(
                                           child: Text(homeModal.itemName,
                                               style: const TextStyle(
-                                                  fontSize: 14,
+                                                  fontSize: 12,
                                                   color: whiteColor,
-                                                  fontWeight:
-                                                      FontWeight.bold))),
+                                                  fontWeight: FontWeight.bold)),
+                                        ),
+                                      ),
                                       Expanded(
                                           flex: 1,
                                           child: Row(
@@ -222,36 +218,34 @@ class _HomeDetailScreenState extends State<HomeDetailScreen> {
                                               const Text('Rs. ',
                                                   style: TextStyle(
                                                       color: yellow,
-                                                      fontSize: 15)),
+                                                      fontSize: 13)),
                                               Text(homeModal.price.toString(),
                                                   style: const TextStyle(
                                                       color: whiteColor,
-                                                      fontSize: 13,
+                                                      fontSize: 11,
                                                       fontWeight:
                                                           FontWeight.bold)),
                                             ],
                                           )),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            15, 0, 15, 15),
-                                        child: Container(
-                                          height: 33,
-                                          width: 100,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(13),
-                                            color: const Color.fromARGB(
-                                                255, 225, 205, 18),
-                                          ),
-                                          child: const Center(
-                                              child: Text('Add to cart',
-                                                  style: TextStyle(
-                                                      fontSize: 13,
-                                                      color: whiteColor,
-                                                      fontWeight:
-                                                          FontWeight.w900))),
+                                      Container(
+                                        height: height * 0.04,
+                                        width: width * 0.25,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(13),
+                                          color: const Color.fromARGB(
+                                              255, 225, 205, 18),
                                         ),
-                                      )
+                                        child: const Center(
+                                            child: FittedBox(
+                                          child: Text('Add to cart',
+                                              style: TextStyle(
+                                                  fontSize: 10,
+                                                  color: whiteColor,
+                                                  fontWeight: FontWeight.w900)),
+                                        )),
+                                      ),
+                                      SizedBox(height: height * 0.01)
                                     ],
                                   ),
                                 ),

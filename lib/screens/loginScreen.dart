@@ -132,9 +132,9 @@ class _DivineAppState extends State<DivineApp> {
                     SizedBox(
                       height: height * 0.05,
                     ),
-                    emailTextField(height * 0.11, width * 0.85, 'Email',
+                    emailTextField(height * 0.13, width * 0.85, 'Email',
                         emailController, 'Email'),
-                    passWordTextField(height * 0.11, width * 0.85, 'Password',
+                    passWordTextField(height * 0.13, width * 0.85, 'Password',
                         passWordController, 'Password'),
                     SizedBox(
                       height: height * 0.01,
@@ -182,16 +182,25 @@ class _DivineAppState extends State<DivineApp> {
                         },
                         child: Align(
                             alignment: Alignment.center,
-                            child: forgetButton(
-                                height * 0.035, width * 0.4, context))),
+                            child:
+                                forgetButton(height * 0.035, width, context))),
+                    SizedBox(
+                      height: height * 0.01,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        rememberButton(height * 0.03, width * 0.3),
+                        SizedBox(
+                          width: width * 0.1,
+                        ),
+                        rememberButton(height * 0.03, width * 0.5),
                         Padding(
                             padding: const EdgeInsets.only(bottom: 7),
-                            child: checkBox(height * 0.03, width * 0.1)),
+                            child: checkBox(height * 0.03, width * 0.2)),
                       ],
+                    ),
+                    SizedBox(
+                      height: height * 0.01,
                     ),
                     orLine(height * 0.035, width * 0.85),
                     SizedBox(
@@ -263,15 +272,13 @@ class _DivineAppState extends State<DivineApp> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      width: width,
-                      child: Row(
-                        children: [
-                          SizedBox(width: width * 0.13),
-                          text(height * 0.045, width * 0.5),
-                          createButton(height * 0.045, width * 0.3, context),
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        text(height * 0.045, width * 0.45),
+                        SizedBox(width: width * 0.03),
+                        createButton(height * 0.045, width * 0.3, context),
+                      ],
                     ),
                   ],
                 ),
@@ -303,21 +310,17 @@ class _DivineAppState extends State<DivineApp> {
   }
 
   Widget createButton(double height, double width, BuildContext context) {
-    return SizedBox(
-      height: height,
-      width: width,
-      child: GestureDetector(
-        onTap: () {
-          Navigator.of(context).pushNamed(SignUpScreen.pageName);
-        },
-        child: const Text('Create Now',
-            style: TextStyle(
-                fontSize: 15,
-                color: yellow,
-                decoration: TextDecoration.underline,
-                fontWeight: FontWeight.w800,
-                decorationColor: yellow)),
-      ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(SignUpScreen.pageName);
+      },
+      child: const Text('Create Now',
+          style: TextStyle(
+              fontSize: 15,
+              color: yellow,
+              decoration: TextDecoration.underline,
+              fontWeight: FontWeight.w800,
+              decorationColor: yellow)),
     );
   }
 
@@ -381,35 +384,27 @@ class _DivineAppState extends State<DivineApp> {
 }
 
 Widget forgetButton(double height, double width, BuildContext context) {
-  return SizedBox(
-    height: height,
-    width: width,
-    child: GestureDetector(
-      onTap: () {
-        Navigator.of(context).pushNamed(ResetScreen.pageName);
-      },
-      child: const Padding(
-        padding: EdgeInsets.only(left: 20),
-        child: Text('Forget Password?',
-            style: TextStyle(
-              color: whiteColor,
-              fontWeight: FontWeight.w800,
-            )),
-      ),
+  return GestureDetector(
+    onTap: () {
+      Navigator.of(context).pushNamed(ResetScreen.pageName);
+    },
+    child: const Padding(
+      padding: EdgeInsets.only(left: 20),
+      child: Text('Forget Password?',
+          style: TextStyle(
+            color: whiteColor,
+            fontWeight: FontWeight.w800,
+          )),
     ),
   );
 }
 
 Widget rememberButton(double height, double width) {
-  return SizedBox(
-    height: height,
-    width: width,
-    child: const Text('Remember me?',
-        style: TextStyle(
-          color: whiteColor,
-          fontWeight: FontWeight.w800,
-        )),
-  );
+  return const Text('Remember me?',
+      style: TextStyle(
+        color: whiteColor,
+        fontWeight: FontWeight.w800,
+      ));
 }
 
 Widget orLine(double height, double width) {
@@ -446,13 +441,9 @@ Widget orLine(double height, double width) {
 }
 
 Widget text(double height, double width) {
-  return SizedBox(
-    height: height,
-    width: width,
-    child: const Text("Don't have an account?",
-        style: TextStyle(
-          color: whiteColor,
-          fontWeight: FontWeight.w800,
-        )),
-  );
+  return const Text("Don't have an account?",
+      style: TextStyle(
+        color: whiteColor,
+        fontWeight: FontWeight.w800,
+      ));
 }

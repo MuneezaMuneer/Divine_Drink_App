@@ -101,348 +101,368 @@ class _AccountScreenState extends State<AccountScreen> {
 
 Widget container(
     double height, double width, BuildContext context, String text1) {
-  return SizedBox(
-    height: height,
+  return Container(
+    color: boxColor,
     width: width,
-    child: Container(
-      color: boxColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Center(
-              child: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: height * 0.06,
-                ),
-                Text(text1,
+    height: height,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Center(
+            child: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: height * 0.06,
+              ),
+              FittedBox(
+                child: Text(text1,
                     style: const TextStyle(
                       fontSize: 14,
                       color: yellow,
                       fontWeight: FontWeight.w500,
                     )),
-                SizedBox(height: height * 0.07),
-                FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-                    future: getData(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        if (snapshot.hasData) {
-                          var data = snapshot.data!.data();
-                          return Text(
+              ),
+              FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                  future: getData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      if (snapshot.hasData) {
+                        var data = snapshot.data!.data();
+                        return FittedBox(
+                          child: Text(
                             data!['email'],
                             style: const TextStyle(
                                 fontSize: 14, color: whiteColor),
-                          );
-                        } else {
-                          return const Text(
+                          ),
+                        );
+                      } else {
+                        return const FittedBox(
+                          child: Text(
                             'No Data',
                             style: TextStyle(
                                 color: Colors.red,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w900),
-                          );
-                        }
-                      } else if (snapshot.connectionState ==
-                          ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(
-                            color: boxColor,
                           ),
                         );
-                      } else {
-                        return const Text(
+                      }
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: boxColor,
+                        ),
+                      );
+                    } else {
+                      return const FittedBox(
+                        child: Text(
                           'Something went wrong',
                           style: TextStyle(
                               color: Colors.red,
                               fontSize: 16,
                               fontWeight: FontWeight.w900),
-                        );
-                      }
-                    })
-              ],
+                        ),
+                      );
+                    }
+                  })
+            ],
+          ),
+        )),
+        Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: InkWell(
+            onTap: () {
+              PersistentNavBarNavigator.pushNewScreen(context,
+                  screen: const UpdateScreen(), withNavBar: false);
+            },
+            child: const Icon(
+              Icons.edit_note_rounded,
+              size: 27,
+              color: yellow,
             ),
-          )),
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: InkWell(
-              onTap: () {
-                PersistentNavBarNavigator.pushNewScreen(context,
-                    screen: const UpdateScreen(), withNavBar: false);
-              },
-              child: const Icon(
-                Icons.edit_note_rounded,
-                size: 27,
-                color: yellow,
-              ),
-            ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     ),
   );
 }
 
 Widget container1(
     double height, double width, BuildContext context, String text1) {
-  return SizedBox(
-    height: height,
+  return Container(
+    color: boxColor,
     width: width,
-    child: Container(
-      color: boxColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Center(
-              child: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: height * 0.06,
-                ),
-                Text(text1,
+    height: height,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Center(
+            child: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: height * 0.06,
+              ),
+              FittedBox(
+                child: Text(text1,
                     style: const TextStyle(
                       fontSize: 14,
                       color: yellow,
                       fontWeight: FontWeight.w500,
                     )),
-                SizedBox(height: height * 0.07),
-                FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-                    future: getData(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        if (snapshot.hasData) {
-                          var data = snapshot.data!.data();
-                          return Text(
+              ),
+              FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                  future: getData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      if (snapshot.hasData) {
+                        var data = snapshot.data!.data();
+                        return FittedBox(
+                          child: Text(
                             data!['password'],
                             style: const TextStyle(
                                 fontSize: 14, color: whiteColor),
-                          );
-                        } else {
-                          return const Text(
+                          ),
+                        );
+                      } else {
+                        return const FittedBox(
+                          child: Text(
                             'No Data',
                             style: TextStyle(
                                 color: Colors.red,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w900),
-                          );
-                        }
-                      } else if (snapshot.connectionState ==
-                          ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(
-                            color: boxColor,
                           ),
                         );
-                      } else {
-                        return const Text(
+                      }
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: boxColor,
+                        ),
+                      );
+                    } else {
+                      return const FittedBox(
+                        child: Text(
                           'Something went wrong',
                           style: TextStyle(
                               color: Colors.red,
                               fontSize: 16,
                               fontWeight: FontWeight.w900),
-                        );
-                      }
-                    })
-              ],
+                        ),
+                      );
+                    }
+                  })
+            ],
+          ),
+        )),
+        Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: InkWell(
+            onTap: () {
+              PersistentNavBarNavigator.pushNewScreen(context,
+                  screen: const UpdateScreen(), withNavBar: false);
+            },
+            child: const Icon(
+              Icons.edit_note_rounded,
+              size: 27,
+              color: yellow,
             ),
-          )),
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: InkWell(
-              onTap: () {
-                PersistentNavBarNavigator.pushNewScreen(context,
-                    screen: const UpdateScreen(), withNavBar: false);
-              },
-              child: const Icon(
-                Icons.edit_note_rounded,
-                size: 27,
-                color: yellow,
-              ),
-            ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     ),
   );
 }
 
 Widget container2(
     double height, double width, BuildContext context, String text1) {
-  return SizedBox(
-    height: height,
+  return Container(
+    color: boxColor,
     width: width,
-    child: Container(
-      color: boxColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Center(
-              child: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: height * 0.06,
-                ),
-                Text(text1,
+    height: height,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Center(
+            child: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: height * 0.06,
+              ),
+              FittedBox(
+                child: Text(text1,
                     style: const TextStyle(
                       fontSize: 14,
                       color: yellow,
                       fontWeight: FontWeight.w500,
                     )),
-                SizedBox(height: height * 0.07),
-                FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-                    future: getData(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        if (snapshot.hasData) {
-                          var data = snapshot.data!.data();
-                          return Text(
+              ),
+              FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                  future: getData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      if (snapshot.hasData) {
+                        var data = snapshot.data!.data();
+                        return FittedBox(
+                          child: Text(
                             data!['displayName'].toString(),
                             style: const TextStyle(
                                 fontSize: 14, color: whiteColor),
-                          );
-                        } else {
-                          return const Text(
+                          ),
+                        );
+                      } else {
+                        return const FittedBox(
+                          child: Text(
                             'No Data',
                             style: TextStyle(
                                 color: Colors.red,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w900),
-                          );
-                        }
-                      } else if (snapshot.connectionState ==
-                          ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(
-                            color: boxColor,
                           ),
                         );
-                      } else {
-                        return const Text(
+                      }
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: boxColor,
+                        ),
+                      );
+                    } else {
+                      return const FittedBox(
+                        child: Text(
                           'Something went wrong',
                           style: TextStyle(
                               color: Colors.red,
                               fontSize: 16,
                               fontWeight: FontWeight.w900),
-                        );
-                      }
-                    })
-              ],
+                        ),
+                      );
+                    }
+                  })
+            ],
+          ),
+        )),
+        Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: InkWell(
+            onTap: () {
+              PersistentNavBarNavigator.pushNewScreen(context,
+                  screen: const UpdateScreen(), withNavBar: false);
+            },
+            child: const Icon(
+              Icons.edit_note_rounded,
+              size: 27,
+              color: yellow,
             ),
-          )),
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: InkWell(
-              onTap: () {
-                PersistentNavBarNavigator.pushNewScreen(context,
-                    screen: const UpdateScreen(), withNavBar: false);
-              },
-              child: const Icon(
-                Icons.edit_note_rounded,
-                size: 27,
-                color: yellow,
-              ),
-            ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     ),
   );
 }
 
 Widget container3(
     double height, double width, BuildContext context, String text1) {
-  return SizedBox(
-    height: height,
+  return Container(
+    color: boxColor,
     width: width,
-    child: Container(
-      color: boxColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Center(
-              child: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: height * 0.06,
-                ),
-                Text(text1,
+    height: height,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Center(
+            child: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: height * 0.06,
+              ),
+              FittedBox(
+                child: Text(text1,
                     style: const TextStyle(
                       fontSize: 14,
                       color: yellow,
                       fontWeight: FontWeight.w500,
                     )),
-                SizedBox(height: height * 0.07),
-                FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-                    future: getData(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        if (snapshot.hasData) {
-                          var data = snapshot.data!.data();
-                          return Text(
+              ),
+              FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                  future: getData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      if (snapshot.hasData) {
+                        var data = snapshot.data!.data();
+                        return FittedBox(
+                          child: Text(
                             data!['phone'].toString(),
                             style: const TextStyle(
                                 fontSize: 14, color: whiteColor),
-                          );
-                        } else {
-                          return const Text(
+                          ),
+                        );
+                      } else {
+                        return const FittedBox(
+                          child: Text(
                             'No Data',
                             style: TextStyle(
                                 color: Colors.red,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w900),
-                          );
-                        }
-                      } else if (snapshot.connectionState ==
-                          ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(
-                            color: boxColor,
                           ),
                         );
-                      } else {
-                        return const Text(
+                      }
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: boxColor,
+                        ),
+                      );
+                    } else {
+                      return const FittedBox(
+                        child: Text(
                           'Something went wrong',
                           style: TextStyle(
                               color: Colors.red,
                               fontSize: 14,
                               fontWeight: FontWeight.w900),
-                        );
-                      }
-                    })
-              ],
+                        ),
+                      );
+                    }
+                  })
+            ],
+          ),
+        )),
+        Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: InkWell(
+            onTap: () {
+              PersistentNavBarNavigator.pushNewScreen(context,
+                  screen: const UpdateScreen(), withNavBar: false);
+            },
+            child: const Icon(
+              Icons.edit_note_rounded,
+              size: 27,
+              color: yellow,
             ),
-          )),
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: InkWell(
-              onTap: () {
-                PersistentNavBarNavigator.pushNewScreen(context,
-                    screen: const UpdateScreen(), withNavBar: false);
-              },
-              child: const Icon(
-                Icons.edit_note_rounded,
-                size: 27,
-                color: yellow,
-              ),
-            ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     ),
   );
 }
@@ -452,36 +472,34 @@ Widget delete(
   double width,
   BuildContext context,
 ) {
-  return SizedBox(
-    height: height,
-    width: width,
-    child: InkWell(
-      onTap: () {},
-      child: Container(
-        color: boxColor,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Text(
-                "Proceed if you want to delete\n your account ",
-                style: TextStyle(
-                    color: Colors.red,
-                    fontWeight: FontWeight.w900,
-                    fontSize: 14),
-              ),
+  return InkWell(
+    onTap: () {},
+    child: Container(
+      width: width,
+      height: height,
+      color: boxColor,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(left: 10),
+            child: Text(
+              "Proceed if you want to delete\n your account ",
+              style: TextStyle(
+                  color: Colors.red, fontWeight: FontWeight.w900, fontSize: 14),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: InkWell(
-                onTap: () {
-                  showDialog<String>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        backgroundColor: yellow,
-                        title: const Center(
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: InkWell(
+              onTap: () {
+                showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      backgroundColor: yellow,
+                      title: const Center(
+                        child: FittedBox(
                           child: Text("DELETE",
                               style: TextStyle(
                                 color: boxColor,
@@ -489,42 +507,44 @@ Widget delete(
                                 fontWeight: FontWeight.w900,
                               )),
                         ),
-                        content: const Text(
-                            'If you want to delete your account then press Yes',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14)),
-                        actions: <Widget>[
-                          TextButton(
-                            style:
-                                TextButton.styleFrom(backgroundColor: boxColor),
-                            child: const Text('Yes',
+                      ),
+                      content: const Text(
+                          'If you want to delete your account then press Yes',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14)),
+                      actions: <Widget>[
+                        TextButton(
+                          style:
+                              TextButton.styleFrom(backgroundColor: boxColor),
+                          child: const FittedBox(
+                            child: Text('Yes',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w900)),
-                            onPressed: () {
-                              deleteUser();
-                              Future.delayed(const Duration(milliseconds: 100));
-                              Navigator.pushNamedAndRemoveUntil(context,
-                                  DivineApp.pageName, (route) => false);
-                            },
                           ),
-                        ],
-                      );
-                    },
-                  );
-                },
-                child: const Icon(
-                  Icons.delete,
-                  size: 25,
-                  color: yellow,
-                ),
+                          onPressed: () {
+                            deleteUser();
+                            Future.delayed(const Duration(milliseconds: 100));
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, DivineApp.pageName, (route) => false);
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: const Icon(
+                Icons.delete,
+                size: 25,
+                color: yellow,
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     ),
   );

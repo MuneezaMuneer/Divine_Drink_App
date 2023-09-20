@@ -124,11 +124,16 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     ),
                   ),
                   SizedBox(height: height * 0.06),
-                  const Text('UPDATE PERSONAL DETAILS',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: yellow,
-                          fontWeight: FontWeight.w700)),
+                  const FittedBox(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 5, right: 5),
+                      child: Text('UPDATE PERSONAL DETAILS',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: yellow,
+                              fontWeight: FontWeight.w700)),
+                    ),
+                  ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(18, 20, 10, 0),
                     child: Text(

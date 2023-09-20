@@ -72,7 +72,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
               ),
               SizedBox(height: height * 0.02),
               SizedBox(
-                height: height * 0.17,
+                height: height * 0.2,
                 width: width * 0.9,
                 child: Container(
                   color: boxColor,
@@ -81,64 +81,78 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                       const Center(
                           child: Padding(
                         padding: EdgeInsets.only(top: 15),
-                        child: Text(
-                          'Order Summary',
-                          style: TextStyle(
-                              fontSize: 17,
-                              color: yellow,
-                              fontWeight: FontWeight.w600),
+                        child: FittedBox(
+                          child: Text(
+                            'Order Summary',
+                            style: TextStyle(
+                                fontSize: 17,
+                                color: yellow,
+                                fontWeight: FontWeight.w600),
+                          ),
                         ),
                       )),
                       SizedBox(height: height * 0.015),
                       Row(
                         children: [
                           SizedBox(width: width * 0.12),
-                          const Text(
-                            'Sub Total',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: whiteColor,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(width: width * 0.32),
-                          const Text('PKR',
+                          const FittedBox(
+                            child: Text(
+                              'Sub Total',
                               style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 14,
                                   color: whiteColor,
-                                  fontWeight: FontWeight.w900)),
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          SizedBox(width: width * 0.2),
+                          const FittedBox(
+                            child: Text('PKR',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: whiteColor,
+                                    fontWeight: FontWeight.w900)),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(left: 3),
-                            child: Text('${widget.firstTotalCartPrice}',
-                                style: const TextStyle(
-                                    fontSize: 12,
-                                    color: yellow,
-                                    fontWeight: FontWeight.w900)),
+                            child: FittedBox(
+                              child: Text('${widget.firstTotalCartPrice}',
+                                  style: const TextStyle(
+                                      fontSize: 12,
+                                      color: yellow,
+                                      fontWeight: FontWeight.w900)),
+                            ),
                           ),
                         ],
                       ),
                       Row(
                         children: [
                           SizedBox(width: width * 0.12),
-                          const Text(
-                            'Shipping',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: whiteColor,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(width: width * 0.33),
-                          const Text('PKR',
+                          const FittedBox(
+                            child: Text(
+                              'Shipping',
                               style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 14,
                                   color: whiteColor,
-                                  fontWeight: FontWeight.w900)),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 3),
-                            child: Text('100',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          SizedBox(width: width * 0.21),
+                          const FittedBox(
+                            child: Text('PKR',
                                 style: TextStyle(
                                     fontSize: 12,
-                                    color: yellow,
+                                    color: whiteColor,
                                     fontWeight: FontWeight.w900)),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 3),
+                            child: FittedBox(
+                              child: Text('100',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: yellow,
+                                      fontWeight: FontWeight.w900)),
+                            ),
                           ),
                         ],
                       ),
@@ -156,26 +170,32 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                       Row(
                         children: [
                           SizedBox(width: width * 0.12),
-                          const Text(
-                            'Total',
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: whiteColor,
-                                fontWeight: FontWeight.w900),
-                          ),
-                          SizedBox(width: width * 0.395),
-                          const Text('PKR',
+                          const FittedBox(
+                            child: Text(
+                              'Total',
                               style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 15,
                                   color: whiteColor,
-                                  fontWeight: FontWeight.w900)),
+                                  fontWeight: FontWeight.w900),
+                            ),
+                          ),
+                          SizedBox(width: width * 0.28),
+                          const FittedBox(
+                            child: Text('PKR',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: whiteColor,
+                                    fontWeight: FontWeight.w900)),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(left: 3),
-                            child: Text('$total',
-                                style: const TextStyle(
-                                    fontSize: 13,
-                                    color: yellow,
-                                    fontWeight: FontWeight.w900)),
+                            child: FittedBox(
+                              child: Text('$total',
+                                  style: const TextStyle(
+                                      fontSize: 13,
+                                      color: yellow,
+                                      fontWeight: FontWeight.w900)),
+                            ),
                           ),
                         ],
                       ),
@@ -197,12 +217,14 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                         alignment: Alignment.topLeft,
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(8, 10, 0, 10),
-                          child: Text(
-                            'Shipping Address',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: yellow,
-                                fontWeight: FontWeight.w900),
+                          child: FittedBox(
+                            child: Text(
+                              'Shipping Address',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: yellow,
+                                  fontWeight: FontWeight.w900),
+                            ),
                           ),
                         ),
                       ),
@@ -220,33 +242,40 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        data!['userName'].toString(),
-                                        style: const TextStyle(
-                                            fontSize: 17, color: whiteColor),
+                                      FittedBox(
+                                        child: Text(
+                                          data!['userName'].toString(),
+                                          style: const TextStyle(
+                                              fontSize: 15, color: whiteColor),
+                                        ),
                                       ),
-                                      Text(
-                                        data['userAddress'].toString(),
-                                        style: const TextStyle(
-                                            fontSize: 17, color: whiteColor),
+                                      FittedBox(
+                                        child: Text(
+                                          data['userAddress'].toString(),
+                                          style: const TextStyle(
+                                              fontSize: 15, color: whiteColor),
+                                        ),
                                       ),
-                                      Text(
-                                        data['userPhone'].toString(),
-                                        style: const TextStyle(
-                                            fontSize: 17, color: whiteColor),
+                                      FittedBox(
+                                        child: Text(
+                                          data['userPhone'].toString(),
+                                          style: const TextStyle(
+                                              fontSize: 15, color: whiteColor),
+                                        ),
                                       ),
-                                      Text(
-                                        data['selectedCity'].toString(),
-                                        style: const TextStyle(
-                                            fontSize: 17, color: whiteColor),
+                                      FittedBox(
+                                        child: Text(
+                                          data['selectedCity'].toString(),
+                                          style: const TextStyle(
+                                              fontSize: 15, color: whiteColor),
+                                        ),
                                       ),
-                                      SizedBox(
-                                        width: width * 0.56,
+                                      FittedBox(
                                         child: Text(
                                           data['userLocation'].toString(),
                                           softWrap: true,
                                           style: const TextStyle(
-                                              fontSize: 17, color: whiteColor),
+                                              fontSize: 15, color: whiteColor),
                                         ),
                                       ),
                                     ],
@@ -284,16 +313,16 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
               ),
               SizedBox(height: height * 0.03),
               SizedBox(
-                height: height * 0.15,
+                height: height * 0.1,
                 width: width * 0.9,
                 child: Container(
                   color: boxColor,
-                  child: Column(
+                  child: const Column(
                     children: [
-                      const Align(
+                      Align(
                         alignment: Alignment.topLeft,
                         child: Padding(
-                          padding: EdgeInsets.fromLTRB(8, 10, 0, 10),
+                          padding: EdgeInsets.fromLTRB(8, 7, 0, 10),
                           child: Text(
                             'Payment Option',
                             style: TextStyle(
@@ -303,12 +332,11 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: height * 0.023),
-                      const Center(
+                      Center(
                         child: Text('Cash on Delivery (COD)',
                             style: TextStyle(
                                 color: whiteColor,
-                                fontSize: 15,
+                                fontSize: 13,
                                 fontWeight: FontWeight.w700)),
                       )
                     ],

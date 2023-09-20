@@ -261,12 +261,14 @@ class _ShippingScreenState extends State<ShippingScreen> {
                       height: height * 0.06,
                       width: width * 0.9,
                       child: const Center(
-                        child: Text(
-                          'Shipping Address',
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: yellow,
-                              fontWeight: FontWeight.w900),
+                        child: FittedBox(
+                          child: Text(
+                            'Shipping Address',
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: yellow,
+                                fontWeight: FontWeight.w900),
+                          ),
                         ),
                       )),
                   SizedBox(height: height * 0.02),
@@ -384,12 +386,14 @@ class _ShippingScreenState extends State<ShippingScreen> {
                                       color: yellow,
                                       borderRadius: BorderRadius.circular(15)),
                                   child: const Center(
-                                    child: Text(
-                                      'Continue to Payment',
-                                      style: TextStyle(
-                                        color: whiteColor,
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 16,
+                                    child: FittedBox(
+                                      child: Text(
+                                        'Continue to Payment',
+                                        style: TextStyle(
+                                          color: whiteColor,
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 16,
+                                        ),
                                       ),
                                     ),
                                   ),

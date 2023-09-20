@@ -69,55 +69,71 @@ class _ContactScreenState extends State<ContactScreen> {
                       ),
                     ),
                     SizedBox(height: height * 0.03),
-                    const Text('Conatct Us',
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.w700,
-                            color: yellow)),
+                    const FittedBox(
+                      child: Text('Conatct Us',
+                          style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.w700,
+                              color: yellow)),
+                    ),
                     SizedBox(height: height * 0.01),
                     const Icon(Icons.location_on_outlined,
                         color: whiteColor, size: 50),
                     SizedBox(height: height * 0.01),
-                    const Text('Head Office',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: yellow)),
+                    const FittedBox(
+                      child: Text('Head Office',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: yellow)),
+                    ),
                     SizedBox(height: height * 0.01),
-                    const Text('Address: 14 A, E-2, Gulberg 3, Lahore PK',
-                        style: TextStyle(color: whiteColor)),
+                    const FittedBox(
+                      child: Text('Address: 14 A, E-2, Gulberg 3, Lahore PK',
+                          style: TextStyle(color: whiteColor)),
+                    ),
                     SizedBox(height: height * 0.01),
-                    const Text('Email: info@divine.com.pk',
-                        style: TextStyle(color: whiteColor)),
+                    const FittedBox(
+                      child: Text('Email: info@divine.com.pk',
+                          style: TextStyle(color: whiteColor)),
+                    ),
                     SizedBox(height: height * 0.01),
                     const Icon(Icons.headphones, color: whiteColor, size: 50),
                     SizedBox(height: height * 0.01),
-                    const Text('Customer Service Department',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: yellow)),
+                    const FittedBox(
+                      child: Text('Customer Service Department',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: yellow)),
+                    ),
                     SizedBox(height: height * 0.01),
-                    const Text('Contact: 42111722477',
-                        style: TextStyle(color: whiteColor)),
+                    const FittedBox(
+                      child: Text('Contact: 42111722477',
+                          style: TextStyle(color: whiteColor)),
+                    ),
                     SizedBox(height: height * 0.01),
-                    const Text('Email: info@divine.com.pk',
-                        style: TextStyle(color: whiteColor)),
+                    const FittedBox(
+                      child: Text('Email: info@divine.com.pk',
+                          style: TextStyle(color: whiteColor)),
+                    ),
                     SizedBox(height: height * 0.01),
-                    const Text('Send Us A Message',
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: yellow)),
+                    const FittedBox(
+                      child: Text('Send Us A Message',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: yellow)),
+                    ),
                     SizedBox(height: height * 0.03),
-                    emailTextField(height * 0.11, width * 0.85, 'Email',
+                    emailTextField(height * 0.12, width * 0.85, 'Email',
                         emailController, 'Email'),
-                    nameTextField(height * 0.11, width * 0.85, 'Username',
+                    nameTextField(height * 0.12, width * 0.85, 'Username',
                         nameController, 'Username'),
-                    mobileTextField(height * 0.11, width * 0.85, 'Phone',
+                    mobileTextField(height * 0.12, width * 0.85, 'Phone',
                         mobileController, 'Phone'),
                     textField(
-                        height * 0.11,
+                        height * 0.12,
                         width * 0.85,
                         'Subject',
                         "Subject is required",
@@ -125,7 +141,7 @@ class _ContactScreenState extends State<ContactScreen> {
                         subjectController,
                         'Subject'),
                     textField(
-                        height * 0.11,
+                        height * 0.12,
                         width * 0.85,
                         'Message',
                         'Minimum 10 Characters Required*',
@@ -221,14 +237,17 @@ class _ContactScreenState extends State<ContactScreen> {
               children: [
                 Align(
                   alignment: Alignment.topLeft,
-                  child: Text(
-                    'Success',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  child: FittedBox(
+                    child: Text(
+                      'Success',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
                   ),
                 ),
                 Align(
                     alignment: Alignment.topLeft,
-                    child: Text('Message Sent Successfully'))
+                    child: FittedBox(child: Text('Message Sent Successfully')))
               ],
             )),
         behavior: SnackBarBehavior.floating,

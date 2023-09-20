@@ -39,13 +39,15 @@ class _LastScreenState extends State<LastScreen> {
                         color: whiteColor,
                         fontWeight: FontWeight.w900)),
                 SizedBox(height: height * 0.02),
-                const Text(
-                    '             Thank you for shopping \nat divine lahore. Your order has been\nplaced and you will be notified with an \norder confirmation call with your details \n                           shortly',
-                    softWrap: true,
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: whiteColor,
-                        fontWeight: FontWeight.w400)),
+                const FittedBox(
+                  child: Text(
+                      '             Thank you for shopping \nat divine lahore. Your order has been\nplaced and you will be notified with an \norder confirmation call with your details \n                           shortly',
+                      softWrap: true,
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: whiteColor,
+                          fontWeight: FontWeight.w400)),
+                ),
                 SizedBox(height: height * 0.04),
                 InkWell(
                   onTap: () {

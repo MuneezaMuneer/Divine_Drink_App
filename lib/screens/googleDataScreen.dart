@@ -101,68 +101,70 @@ class _GoogleAccountScreenState extends State<GoogleAccountScreen> {
 
 Widget container(
     double height, double width, BuildContext context, String text1) {
-  return SizedBox(
+  return Container(
+    color: boxColor,
     height: height,
     width: width,
-    child: Container(
-      color: boxColor,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 15),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: height * 0.04,
-            ),
-            Text(text1,
+    child: Padding(
+      padding: const EdgeInsets.only(left: 15),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: height * 0.04,
+          ),
+          FittedBox(
+            child: Text(text1,
                 style: const TextStyle(
                   fontSize: 14,
                   color: yellow,
                   fontWeight: FontWeight.w500,
                 )),
-            SizedBox(
-              height: height * 0.06,
-            ),
-            FutureBuilder(
-              future: getData(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasData) {
-                    var data = snapshot.data!.data();
-                    return Text(
+          ),
+          FutureBuilder(
+            future: getData(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasData) {
+                  var data = snapshot.data!.data();
+                  return FittedBox(
+                    child: Text(
                       data!['email'],
                       style: const TextStyle(fontSize: 14, color: whiteColor),
-                    );
-                  } else {
-                    return const Text(
+                    ),
+                  );
+                } else {
+                  return const FittedBox(
+                    child: Text(
                       'No Data',
                       style: TextStyle(
                           color: Colors.red,
                           fontSize: 16,
                           fontWeight: FontWeight.w900),
-                    );
-                  }
-                } else if (snapshot.connectionState ==
-                    ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: boxColor,
                     ),
                   );
-                } else {
-                  return const Text(
+                }
+              } else if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: boxColor,
+                  ),
+                );
+              } else {
+                return const FittedBox(
+                  child: Text(
                     'Something went wrong',
                     style: TextStyle(
                         color: Colors.red,
                         fontSize: 16,
                         fontWeight: FontWeight.w900),
-                  );
-                }
-              },
-            )
-          ],
-        ),
+                  ),
+                );
+              }
+            },
+          )
+        ],
       ),
     ),
   );
@@ -170,68 +172,70 @@ Widget container(
 
 Widget container1(
     double height, double width, BuildContext context, String text1) {
-  return SizedBox(
-    height: height,
+  return Container(
+    color: boxColor,
     width: width,
-    child: Container(
-      color: boxColor,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 15),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: height * 0.04,
-            ),
-            Text(text1,
+    height: height,
+    child: Padding(
+      padding: const EdgeInsets.only(left: 15),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: height * 0.04,
+          ),
+          FittedBox(
+            child: Text(text1,
                 style: const TextStyle(
                   fontSize: 14,
                   color: yellow,
                   fontWeight: FontWeight.w500,
                 )),
-            SizedBox(
-              height: height * 0.06,
-            ),
-            FutureBuilder(
-              future: getData(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasData) {
-                    var data = snapshot.data!.data();
-                    return Text(
+          ),
+          FutureBuilder(
+            future: getData(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasData) {
+                  var data = snapshot.data!.data();
+                  return FittedBox(
+                    child: Text(
                       data!['displayName'],
                       style: const TextStyle(fontSize: 14, color: whiteColor),
-                    );
-                  } else {
-                    return const Text(
+                    ),
+                  );
+                } else {
+                  return const FittedBox(
+                    child: Text(
                       'No Data',
                       style: TextStyle(
                           color: Colors.red,
                           fontSize: 16,
                           fontWeight: FontWeight.w900),
-                    );
-                  }
-                } else if (snapshot.connectionState ==
-                    ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: boxColor,
                     ),
                   );
-                } else {
-                  return const Text(
+                }
+              } else if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: boxColor,
+                  ),
+                );
+              } else {
+                return const FittedBox(
+                  child: Text(
                     'Something went wrong',
                     style: TextStyle(
                         color: Colors.red,
                         fontSize: 16,
                         fontWeight: FontWeight.w900),
-                  );
-                }
-              },
-            )
-          ],
-        ),
+                  ),
+                );
+              }
+            },
+          )
+        ],
       ),
     ),
   );
@@ -239,68 +243,70 @@ Widget container1(
 
 Widget container2(
     double height, double width, BuildContext context, String text1) {
-  return SizedBox(
-    height: height,
+  return Container(
     width: width,
-    child: Container(
-      color: boxColor,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 15),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: height * 0.04,
-            ),
-            Text(text1,
+    height: height,
+    color: boxColor,
+    child: Padding(
+      padding: const EdgeInsets.only(left: 15),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: height * 0.04,
+          ),
+          FittedBox(
+            child: Text(text1,
                 style: const TextStyle(
                   fontSize: 14,
                   color: yellow,
                   fontWeight: FontWeight.w500,
                 )),
-            SizedBox(
-              height: height * 0.06,
-            ),
-            FutureBuilder(
-              future: getData(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasData) {
-                    var data = snapshot.data!.data();
-                    return Text(
+          ),
+          FutureBuilder(
+            future: getData(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasData) {
+                  var data = snapshot.data!.data();
+                  return FittedBox(
+                    child: Text(
                       data!['phone'],
                       style: const TextStyle(fontSize: 14, color: whiteColor),
-                    );
-                  } else {
-                    return const Text(
+                    ),
+                  );
+                } else {
+                  return const FittedBox(
+                    child: Text(
                       'No Data',
                       style: TextStyle(
                           color: Colors.red,
                           fontSize: 16,
                           fontWeight: FontWeight.w900),
-                    );
-                  }
-                } else if (snapshot.connectionState ==
-                    ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: boxColor,
                     ),
                   );
-                } else {
-                  return const Text(
+                }
+              } else if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: boxColor,
+                  ),
+                );
+              } else {
+                return const FittedBox(
+                  child: Text(
                     'Something went wrong',
                     style: TextStyle(
                         color: Colors.red,
                         fontSize: 16,
                         fontWeight: FontWeight.w900),
-                  );
-                }
-              },
-            )
-          ],
-        ),
+                  ),
+                );
+              }
+            },
+          )
+        ],
       ),
     ),
   );
@@ -341,12 +347,14 @@ Widget delete(
                       return AlertDialog(
                         backgroundColor: yellow,
                         title: const Center(
-                          child: Text("DELETE",
-                              style: TextStyle(
-                                color: boxColor,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w900,
-                              )),
+                          child: FittedBox(
+                            child: Text("DELETE",
+                                style: TextStyle(
+                                  color: boxColor,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w900,
+                                )),
+                          ),
                         ),
                         content: const Text(
                             'If you want to delete your account then press Yes',
@@ -358,12 +366,14 @@ Widget delete(
                           TextButton(
                             style:
                                 TextButton.styleFrom(backgroundColor: boxColor),
-                            child: const Text('Yes',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w900,
-                                )),
+                            child: const FittedBox(
+                              child: Text('Yes',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w900,
+                                  )),
+                            ),
                             onPressed: () {
                               deleteUser();
                               Future.delayed(const Duration(milliseconds: 100));

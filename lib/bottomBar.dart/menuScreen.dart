@@ -175,7 +175,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                         flex: 1,
                                         child: Text(product.name,
                                             style: const TextStyle(
-                                                fontSize: 16,
+                                                fontSize: 14,
                                                 color: whiteColor,
                                                 fontWeight: FontWeight.bold))),
                                     Expanded(
@@ -183,7 +183,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                         child: Text(product.range,
                                             style: const TextStyle(
                                                 color: yellow,
-                                                fontSize: 14,
+                                                fontSize: 12,
                                                 fontStyle: FontStyle.italic,
                                                 fontWeight: FontWeight.bold))),
                                   ],
